@@ -4,6 +4,8 @@ def PatternCount(Pattern, Text):
         if Text[i:i+len(Pattern)] == Pattern:
             count = count+1
     return count 
+
+
 def FrequencyMap(Text, k):
     n = len(Text)
     freq = {}
@@ -16,15 +18,13 @@ def FrequencyMap(Text, k):
     return freq
     
 
+def FrequentWords(Text, k):
+    words = []
+    freq = FrequencyMap(Text, k)
+    m = max(freq.values())
+    for key in freq.keys():
+        if freq[key] == m:
+            words.append(key)
 
-def FrequencyMap(Text, k):
-    # your code here
-    n = len(Text)
-    freq = {}
-    for i in range(n-k+1):
-        Pattern = Text[i:i+k]
-        if Pattern not in freq.keys():
-            freq[Pattern] = 1
-        else:
-            freq[Pattern]= freq[Pattern]+1
-    return freq
+        # add each key to words whose corresponding frequency value is equal to m
+    return words
